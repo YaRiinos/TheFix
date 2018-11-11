@@ -1,4 +1,4 @@
-package com.sourcey.materiallogindemo;
+package com.sourcey.theFixApp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

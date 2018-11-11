@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sourcey.materiallogindemo">
+    package="com.sourcey.theFixApp">
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.sourcey.theFixApp.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,16 +17,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.sourcey.theFixApp.LoginActivity"
             android:theme="@style/AppTheme.Dark" />
         <activity
-            android:name=".SignupActivity"
+            android:name="com.sourcey.theFixApp.SignupActivity"
             android:theme="@style/AppTheme.Dark" />
-        <activity android:name=".ContActivity" />
-        <activity android:name=".addItemActivity" />
-        <activity android:name=".cellphoneActivity" />
+        <activity android:name="com.sourcey.theFixApp.ContActivity" />
+        <activity android:name="com.sourcey.theFixApp.addItemActivity" />
+        <activity android:name="com.sourcey.theFixApp.cellphoneActivity" />
         <activity android:name=".CustomList" />
-        <activity android:name=".compressorActivity" />
+        <activity android:name="com.sourcey.theFixApp.compressorActivity" />
     </application>
 
 </manifest>

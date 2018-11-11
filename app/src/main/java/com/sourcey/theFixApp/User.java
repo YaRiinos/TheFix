@@ -1,4 +1,4 @@
-package com.sourcey.materiallogindemo;
+package com.sourcey.theFixApp;
 
 public class User {
     String name, address, email, mobile, password;

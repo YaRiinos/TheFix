@@ -1,4 +1,4 @@
-package com.sourcey.materiallogindemo;
+package com.sourcey.theFixApp;
 
 import android.content.Context;
 import android.content.Intent;

@@ -1,4 +1,4 @@
-package com.sourcey.materiallogindemo;
+package com.sourcey.theFixApp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.sourcey.materiallogindemo.MainActivity.loginAccounts;
+import static com.sourcey.theFixApp.MainActivity.loginAccounts;
 
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
