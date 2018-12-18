@@ -1,4 +1,4 @@
-package com.sourcey.theFixApp;
+package com.sourcey.theFixApp.authentication;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,10 +18,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.sourcey.theFixApp.MainActivity;
+import com.sourcey.theFixApp.R;
 import com.sourcey.theFixApp.account.Account;
+
+import java.util.UUID;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import static com.sourcey.theFixApp.MainActivity.loginAccounts;
 
 public class SignupActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
@@ -101,15 +107,21 @@ public class SignupActivity extends AppCompatActivity {
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
 
-//        String name = _nameText.getText().toString();
-//        String address = _addressText.getText().toString();
-//        String email = _emailText.getText().toString();
-//        String mobile = _mobileText.getText().toString();
-//        String password = _passwordText.getText().toString();
-//        String reEnterPassword = _reEnterPasswordText.getText().toString();
+        String name = _nameText.getText().toString();
+        String address = _addressText.getText().toString();
+        String mobile = _mobileText.getText().toString();
 
         // TODO: Implement your own signup logic here.
-//        Account account = new Account(1, name, address, email, mobile, password);
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");
+
+         // Creating new user node, which returns the unique key value
+        // new user node would be /users/$userid/
+        String userId = mDatabase.push().getKey();
+
+        Account account = new Account(userId, name, address, email, mobile, password);
+
+        // pushing user to 'users' node using the userId
+        mDatabase.child(userId).setValue(account);
 
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {

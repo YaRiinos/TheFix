@@ -1,4 +1,4 @@
-package com.sourcey.theFixApp;
+package com.sourcey.theFixApp.authentication;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.sourcey.theFixApp.MainActivity;
+import com.sourcey.theFixApp.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

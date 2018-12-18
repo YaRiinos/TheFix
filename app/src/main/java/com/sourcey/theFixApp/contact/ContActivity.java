@@ -1,4 +1,4 @@
-package com.sourcey.theFixApp;
+package com.sourcey.theFixApp.contact;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.sourcey.theFixApp.R;
 
 public class ContActivity extends AppCompatActivity {
     TextView nameText, emailText, messageText;

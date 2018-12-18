@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.sourcey.theFixApp.account.Account;
+import com.sourcey.theFixApp.contact.ContActivity;
+import com.sourcey.theFixApp.items.addItemActivity;
+import com.sourcey.theFixApp.items.itemListActivity;
 
 import java.util.ArrayList;
 

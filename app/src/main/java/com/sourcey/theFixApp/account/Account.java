@@ -1,15 +1,20 @@
 package com.sourcey.theFixApp.account;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
+@IgnoreExtraProperties
 public class Account {
 
-    private long id;
+    private String id;
     private String name,
             address,
             email,
             mobile,
             password;
 
-    public Account(long id, String name, String address, String email, String mobile, String password) {
+    public Account(){}
+
+    public Account(String id, String name, String address, String email, String mobile, String password) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -18,11 +23,11 @@ public class Account {
         this.password = password;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

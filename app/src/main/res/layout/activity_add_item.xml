@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
-    tools:context="com.sourcey.theFixApp.addItemActivity">
+    tools:context="com.sourcey.theFixApp.items.addItemActivity">
 
     <Button
-        android:id="@+id/sendButton2"
+        android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -16,6 +16,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
+        android:onClick="addItem"
         android:text="Add"
         android:textColor="@color/Orange"
         android:textSize="27sp"
@@ -92,20 +93,20 @@
             app:layout_rowWeight="1" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/itemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="center"
             android:inputType="textPersonName"
-            app:layout_column="0"
-            app:layout_columnWeight="1"
-            app:layout_row="3"
-            app:layout_rowWeight="1"
             android:textColor="@color/text_color"
             android:textColorHint="@color/iron"
             android:textCursorDrawable="@null"
-            app:backgroundTint="@color/white" />
+            app:backgroundTint="@color/white"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_row="3"
+            app:layout_rowWeight="1" />
 
         <TextView
             android:id="@+id/textView7"
@@ -122,20 +123,20 @@
             app:layout_rowWeight="1" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/itemPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="center"
             android:inputType="number"
-            app:layout_column="0"
-            app:layout_columnWeight="1"
-            app:layout_row="5"
-            app:layout_rowWeight="1"
             android:textColor="@color/text_color"
             android:textColorHint="@color/iron"
             android:textCursorDrawable="@null"
-            app:backgroundTint="@color/white" />
+            app:backgroundTint="@color/white"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_row="5"
+            app:layout_rowWeight="1" />
 
         <TextView
             android:id="@+id/textView4"
@@ -152,7 +153,7 @@
             app:layout_rowWeight="1" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/itemWorkPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -182,7 +183,7 @@
             app:layout_rowWeight="1" />
 
         <EditText
-            android:id="@+id/editText7"
+            android:id="@+id/desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
