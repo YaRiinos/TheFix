@@ -48,4 +48,12 @@ public class Item {
     public void setItemDesc(String itemDesc) {
         this.itemDesc = itemDesc;
     }
+
+    public String getItemType() {
+        return itemType;
+    }
+
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
+    }
 }
