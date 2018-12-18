@@ -46,6 +46,7 @@ public class addItemActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
+    private FirebaseUser user;
 
     public void goBack(View view) {
         finish();
@@ -86,72 +87,19 @@ public class addItemActivity extends AppCompatActivity {
 
     }
 
-    private void createItem(String itemName, String itemPrice, String itemWorkPrice, String itemDesc, String itemType) {
-        FirebaseDatabase database =  FirebaseDatabase.getInstance();
-        DatabaseReference mRef =  database.getReference().child("Items");
-        Item item = new Item(itemName, itemPrice, itemWorkPrice, itemDesc, itemType);
+    private void createItem(final String itemName, final String itemPrice, final String itemWorkPrice, final String itemDesc, final String itemType) {
 
-        mRef.setValue(item).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference mRef = database.getReference().child("Items");
+
+        Item item = new Item(itemName, itemPrice, itemWorkPrice, itemDesc, itemType);
+        mRef.child(itemType).child(itemName).setValue(item).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(addItemActivity.this, "Done",
                         Toast.LENGTH_SHORT).show();
             }
         });
-
     }
-
-
-//    private void createItem(String itemName, String itemPrice, String itemWorkPrice,
-//                            String itemDesc, String itemType) {
-//        itemId = mFirebaseDatabase.push().getKey();
-//        if (TextUtils.isEmpty(itemId)) {
-//            itemId = mFirebaseDatabase.push().getKey();
-//        }
-//
-//        Item newItem = new Item(itemName, itemPrice, itemWorkPrice, itemDesc, itemType);
-//
-//        mFirebaseDatabase.child(itemId).setValue(newItem);
-//
-//        //addItemChangeListener();
-//    }
-//
-//    /**
-//     * Item data change listener
-//     */
-//    private void addItemChangeListener() {
-//        // User data change listener
-//        mFirebaseDatabase.child(itemId).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                Item item = dataSnapshot.getValue(Item.class);
-//
-//                // Check for null
-//                if (item == null) {
-//                    Log.e(TAG, "Item data is null!");
-//                    return;
-//                }
-//
-//                Log.e(TAG, "Item data is changed!");
-//
-//                // clear edit text
-//                _desc.setText("");
-//                _itemName.setText("");
-//                _itemPrice.setText("");
-//                _itemWorkPrice.setText("");
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                // Failed to read value
-//                Log.e(TAG, "Failed to read item", error.toException());
-//            }
-//        });
-//    }
-//
-//    private void updateItem(String itemName, String itemPrice,
-//                            String itemWorkPrice, String itemDesc, String itemType) {
-//    }
-
 
 }
