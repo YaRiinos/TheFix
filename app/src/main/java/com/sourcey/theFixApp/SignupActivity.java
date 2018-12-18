@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sourcey.theFixApp.account.Account;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -78,8 +80,8 @@ public class SignupActivity extends AppCompatActivity {
         String reEnterPassword = _reEnterPasswordText.getText().toString();
 
         // TODO: Implement your own signup logic here.
-        User user = new User(name, address, email, mobile, password);
-        loginAccounts.add(user);
+        Account account = new Account(1,name, address, email, mobile, password);
+        loginAccounts.add(account);
 
         new android.os.Handler().postDelayed(
                 new Runnable() {

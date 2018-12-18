@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.sourcey.theFixApp.account.Account;
+
 import java.util.ArrayList;
 
 import static java.lang.Thread.sleep;
@@ -17,7 +19,7 @@ import static java.lang.Thread.sleep;
 public class MainActivity extends AppCompatActivity {
 
     static Boolean login = false, successLogin = false;
-    static ArrayList<User> loginAccounts = new ArrayList<User>();
+    static ArrayList<Account> loginAccounts = new ArrayList<Account>();
 
 
     public void backDialog(View view){
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openCellphone(View view){
-        Intent intent = new Intent(MainActivity.this, cellphoneActivity.class);
+        Intent intent = new Intent(MainActivity.this, itemListActivity.class);
         startActivity(intent);
     }
 

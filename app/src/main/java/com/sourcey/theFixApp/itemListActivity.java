@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class cellphoneActivity extends AppCompatActivity {
+public class itemListActivity extends AppCompatActivity {
 
 
     public void goBack(View view){
@@ -20,7 +20,7 @@ public class cellphoneActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cellphone);
+        setContentView(R.layout.activity_item_list);
 
         ListView myListView = findViewById(R.id.mylistview);
 
@@ -47,7 +47,7 @@ public class cellphoneActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch( position )
                 {
-                    case 0:  Intent newActivity = new Intent(cellphoneActivity.this, compressorActivity.class);
+                    case 0:  Intent newActivity = new Intent(itemListActivity.this, singleItemActivity.class);
                         startActivity(newActivity);
                         break;
 //                    case 1:  Intent newActivity = new Intent(this, youtube.class);
