@@ -122,6 +122,7 @@ public class SignupActivity extends AppCompatActivity {
         // pushing user to 'users' node using the userId
         mDatabase.child(userId).setValue(account);
 
+
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
 
