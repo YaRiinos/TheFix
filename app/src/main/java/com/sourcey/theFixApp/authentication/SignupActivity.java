@@ -111,7 +111,6 @@ public class SignupActivity extends AppCompatActivity {
         String address = _addressText.getText().toString();
         String mobile = _mobileText.getText().toString();
 
-        // TODO: Implement your own signup logic here.
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");
 
          // Creating new user node, which returns the unique key value
@@ -153,9 +152,8 @@ public class SignupActivity extends AppCompatActivity {
 
 
     //When press back it's minimize the app
-    public void onBackPressed() {
-        // Disable going back to the MainActivity
-        moveTaskToBack(true);
+    public void goBack(View view){
+        finish();
     }
 
 

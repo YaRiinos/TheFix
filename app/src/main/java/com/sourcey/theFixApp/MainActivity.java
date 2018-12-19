@@ -8,43 +8,56 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.sourcey.theFixApp.account.Account;
 import com.sourcey.theFixApp.contact.ContActivity;
-import com.sourcey.theFixApp.items.addItemActivity;
+import com.sourcey.theFixApp.items.Item;
+import com.sourcey.theFixApp.items.categoryType;
+import com.sourcey.theFixApp.managment.addItemActivity;
 import com.sourcey.theFixApp.items.itemListActivity;
 
 import java.util.ArrayList;
+
+import butterknife.BindView;
 
 import static java.lang.Thread.sleep;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    static Boolean login = false, successLogin = false;
-    static ArrayList<Account> loginAccounts = new ArrayList<Account>();
+    @BindView(R.id.elctCat)
+    Button _elec;
+    @BindView(R.id.carCat)
+    Button _car;
+    @BindView(R.id.cellCat)
+    Button _cell;
 
+    public void openItemListActivity(View view){
 
-    public void backDialog(View view){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Are you sure you want to exit?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        MainActivity.this.finish();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
+        String catName;
 
-    public void openCellphone(View view){
+        switch(view.getId()) {
+            case R.id.elctCat:
+                catName = "Electric";
+                break;
+
+            case R.id.carCat:
+                catName = "Car";
+                break;
+
+            case R.id.cellCat:
+                catName = "Cellphone";
+                break;
+
+            default:
+                throw new RuntimeException("Unknow button ID");
+
+        }
+
         Intent intent = new Intent(MainActivity.this, itemListActivity.class);
+        intent.putExtra("cat", catName);
         startActivity(intent);
     }
 
@@ -110,4 +123,6 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alert = builder.create();
         alert.show();
     }
+
+
 }

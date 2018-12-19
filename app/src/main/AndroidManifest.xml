@@ -25,7 +25,7 @@
             android:name="com.sourcey.theFixApp.authentication.SignupActivity"
             android:theme="@style/AppTheme.Dark" />
         <activity android:name="com.sourcey.theFixApp.contact.ContActivity" />
-        <activity android:name="com.sourcey.theFixApp.items.addItemActivity" />
+        <activity android:name="com.sourcey.theFixApp.managment.addItemActivity" />
         <activity android:name="com.sourcey.theFixApp.items.itemListActivity" />
         <activity android:name="com.sourcey.theFixApp.items.singleItemActivity" />
     </application>

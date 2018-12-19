@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
-    tools:context="com.sourcey.theFixApp.items.addItemActivity">
+    tools:context="com.sourcey.theFixApp.managment.addItemActivity">
 
     <Button
         android:id="@+id/addButton"

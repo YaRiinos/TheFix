@@ -1,6 +1,6 @@
 package com.sourcey.theFixApp.items;
 
-public class Item {
+public class Item  {
     private String itemName,
             itemPrice,
             itemWorkPrice,
@@ -8,6 +8,10 @@ public class Item {
             itemType;
 
     public Item(){}
+
+    public Item(String itemType) {
+        this.itemType = itemType;
+    }
 
     public Item(String itemName, String itemPrice, String itemWorkPrice, String itemDesc, String itemType) {
         this.itemName = itemName;
@@ -55,5 +59,16 @@ public class Item {
 
     public void setItemType(String itemType) {
         this.itemType = itemType;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "itemName='" + itemName + '\'' +
+                ", itemPrice='" + itemPrice + '\'' +
+                ", itemWorkPrice='" + itemWorkPrice + '\'' +
+                ", itemDesc='" + itemDesc + '\'' +
+                ", itemType='" + itemType + '\'' +
+                '}';
     }
 }
