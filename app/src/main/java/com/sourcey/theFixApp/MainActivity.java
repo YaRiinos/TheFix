@@ -17,6 +17,7 @@ import com.sourcey.theFixApp.items.Item;
 import com.sourcey.theFixApp.items.categoryType;
 import com.sourcey.theFixApp.managment.addItemActivity;
 import com.sourcey.theFixApp.items.itemListActivity;
+import com.sourcey.theFixApp.managment.managmentActivity;
 
 import java.util.ArrayList;
 
@@ -67,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void openAddItem(View view){
-        Intent intent = new Intent(MainActivity.this, addItemActivity.class);
+    public void openManagerPage(View view){
+        Intent intent = new Intent(MainActivity.this, managmentActivity.class);
         startActivity(intent);
 
     }

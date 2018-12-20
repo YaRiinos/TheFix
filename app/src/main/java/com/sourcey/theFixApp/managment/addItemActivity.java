@@ -37,11 +37,6 @@ public class addItemActivity extends AppCompatActivity {
     @BindView(R.id.addButton)
     Button _add;
     Spinner spinnerCat;
-    private String itemId;
-    private FirebaseAuth auth;
-    private DatabaseReference mFirebaseDatabase;
-    private FirebaseDatabase mFirebaseInstance;
-    private FirebaseUser user;
 
     public void goBack(View view) {
         finish();
@@ -66,10 +61,10 @@ public class addItemActivity extends AppCompatActivity {
 
     public void addItem(View view) {
 
-        mFirebaseInstance = FirebaseDatabase.getInstance();
+        FirebaseDatabase mFirebaseInstance = FirebaseDatabase.getInstance();
 
         // get reference to 'items' node
-        mFirebaseDatabase = mFirebaseInstance.getReference("items");
+        DatabaseReference mFirebaseDatabase = mFirebaseInstance.getReference("items");
 
 
         String itemName = ((TextView) findViewById(R.id.itemName)).getText().toString();
