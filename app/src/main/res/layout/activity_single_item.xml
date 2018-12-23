@@ -122,10 +122,10 @@
                 android:theme="@style/MyButton"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/sendButton2" />
+                app:layout_constraintStart_toEndOf="@+id/updatePriceButton" />
 
             <Button
-                android:id="@+id/sendButton2"
+                android:id="@+id/updatePriceButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -134,6 +134,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginEnd="24dp"
                 android:layout_marginRight="24dp"
+                android:onClick="updatePriceCustomPopup"
                 android:text="Update Price"
                 android:textColor="@color/Orange"
                 android:textSize="20sp"

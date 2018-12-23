@@ -32,6 +32,11 @@
         <item name="colorButtonNormal">@color/white</item>
     </style>
 
+    <style name="MyButtonNegative" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/white</item>
+        <item name="colorButtonNormal">@color/Orange</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

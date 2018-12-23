@@ -11,6 +11,7 @@ public class Account {
             email,
             mobile,
             password;
+    private int points;
 
     public Account(){}
 
@@ -21,6 +22,7 @@ public class Account {
         this.email = email;
         this.mobile = mobile;
         this.password = password;
+        this.points = 0;
     }
 
     public String getId() {
@@ -61,6 +63,14 @@ public class Account {
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public String getPassword() {

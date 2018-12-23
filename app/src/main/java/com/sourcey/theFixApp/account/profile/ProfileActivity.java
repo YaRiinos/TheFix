@@ -44,12 +44,14 @@ public class ProfileActivity extends AppCompatActivity {
                 String name = dataSnapshot.getValue().toString();
                 String cleanName = name.substring(1, name.length()-1)
                         .replace("Name=", "").replace("Address=", "")
-                        .replace("Email=","").replace("Mobile=","");
+                        .replace("Email=","").replace("Mobile=","")
+                        .replace("Points=", "");
                 String[] itemData = cleanName.split(",");
-                ((TextView) findViewById(R.id.profileEmail)).setText(itemData[0]);
-                ((TextView) findViewById(R.id.profileName)).setText(itemData[3]);
-                ((TextView) findViewById(R.id.profileMobile)).setText(itemData[2]);
-                ((TextView) findViewById(R.id.profileAddress)).setText(itemData[1]);
+                ((TextView) findViewById(R.id.profileEmail)).setText(itemData[1]);
+                ((TextView) findViewById(R.id.profileName)).setText(itemData[4]);
+                ((TextView) findViewById(R.id.profileMobile)).setText(itemData[3]);
+                ((TextView) findViewById(R.id.profileAddress)).setText(itemData[2]);
+                ((TextView) findViewById(R.id.profilePoints)).setText(itemData[0]);
             }
 
             @Override
