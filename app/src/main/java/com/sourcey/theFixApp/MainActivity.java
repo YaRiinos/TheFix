@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.sourcey.theFixApp.account.Account;
+import com.sourcey.theFixApp.account.profile.ProfileActivity;
 import com.sourcey.theFixApp.contact.ContActivity;
 import com.sourcey.theFixApp.items.Item;
 import com.sourcey.theFixApp.items.categoryType;
@@ -67,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void openUserProfile(View view){
+        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+        startActivity(intent);
+
+    }
+
+
 
     public void openManagerPage(View view){
         Intent intent = new Intent(MainActivity.this, managmentActivity.class);

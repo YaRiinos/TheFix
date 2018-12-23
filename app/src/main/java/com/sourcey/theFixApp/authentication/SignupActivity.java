@@ -18,12 +18,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.sourcey.theFixApp.MainActivity;
 import com.sourcey.theFixApp.R;
 import com.sourcey.theFixApp.account.Account;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import butterknife.BindView;
@@ -50,6 +53,9 @@ public class SignupActivity extends AppCompatActivity {
     TextView _loginLink;
 
     private FirebaseAuth auth;
+    FirebaseUser user;
+    String userId;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,6 +81,8 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
+         user = FirebaseAuth.getInstance().getCurrentUser();
+         userId = user.getUid();
 
     }
 
@@ -107,20 +115,12 @@ public class SignupActivity extends AppCompatActivity {
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
 
-        String name = _nameText.getText().toString();
+        final String name = _nameText.getText().toString();
         String address = _addressText.getText().toString();
         String mobile = _mobileText.getText().toString();
 
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");
 
-         // Creating new user node, which returns the unique key value
-        // new user node would be /users/$userid/
-        String userId = mDatabase.push().getKey();
-
-        Account account = new Account(userId, name, address, email, mobile, password);
-
-        // pushing user to 'users' node using the userId
-        mDatabase.child(userId).setValue(account);
+        final Account account = new Account(userId, name, address, email, mobile, password);
 
 
         auth.createUserWithEmailAndPassword(email, password)
@@ -129,10 +129,21 @@ public class SignupActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
+                            String user_id = auth.getCurrentUser().getUid();
+                            DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+
+                            Map newPost = new HashMap();
+                            newPost.put("Name", account.getName());
+                            newPost.put("Address", account.getAddress());
+                            newPost.put("Email", account.getEmail());
+                            newPost.put("Mobile", account.getMobile());
+
+                            current_user_db.setValue(newPost);
+
                             progressDialog.dismiss();
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = auth.getCurrentUser();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                         } else {
