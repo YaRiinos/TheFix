@@ -49,10 +49,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="243dp"
         android:onClick="openItemListActivity"
-        android:text="מוצרי חשמל"
+        android:text="Electrics"
         android:textColor="@color/Orange"
         android:textSize="27sp"
-        android:theme="@style/MyButton" />
+        android:theme="@style/MyButton"
+        android:textAllCaps="false"/>
 
     <Button
         android:id="@+id/carCat"
@@ -62,10 +63,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="192dp"
         android:onClick="openItemListActivity"
-        android:text="רכב"
+        android:text="Cars"
         android:textColor="@color/Orange"
         android:textSize="27sp"
-        android:theme="@style/MyButton" />
+        android:theme="@style/MyButton"
+        android:textAllCaps="false"/>
 
     <Button
         android:id="@+id/cellCat"
@@ -75,10 +77,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="139dp"
         android:onClick="openItemListActivity"
-        android:text="סלולר"
+        android:text="Phones"
         android:textColor="@color/Orange"
         android:textSize="27sp"
-        android:theme="@style/MyButton" />
+        android:theme="@style/MyButton"
+        android:textAllCaps="false"/>
 
     <Button
         android:id="@+id/button4"
@@ -87,7 +90,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="85dp"
-        android:text="עוד קטגוריה"
+        android:text="Another Category"
+        android:textAllCaps="false"
         android:textColor="@color/Orange"
         android:textSize="27sp"
         android:theme="@style/MyButton" />
