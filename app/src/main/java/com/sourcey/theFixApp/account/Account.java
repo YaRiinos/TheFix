@@ -11,7 +11,7 @@ public class Account {
             email,
             mobile,
             password;
-    private int points;
+    private double points;
 
     public Account(){}
 
@@ -65,11 +65,11 @@ public class Account {
         this.mobile = mobile;
     }
 
-    public int getPoints() {
+    public double getPoints() {
         return points;
     }
 
-    public void setPoints(int points) {
+    public void setPoints(double points) {
         this.points = points;
     }
 
@@ -79,5 +79,18 @@ public class Account {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", password='" + password + '\'' +
+                ", points=" + points +
+                '}';
     }
 }

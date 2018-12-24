@@ -94,8 +94,6 @@ public class LoginActivity extends AppCompatActivity {
         String userEmail = _emailText.getText().toString();
         final String userPassword = _passwordText.getText().toString();
 
-        // TODO: Implement your own authentication logic here.
-
         if (TextUtils.isEmpty(userEmail)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;

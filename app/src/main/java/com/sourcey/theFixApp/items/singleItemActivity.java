@@ -6,25 +6,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sourcey.theFixApp.R;
+import com.sourcey.theFixApp.account.Account;
 
 public class singleItemActivity extends AppCompatActivity {
 
-    private DatabaseReference mRef;
+    private DatabaseReference mRef, mRefUser;
     Dialog updatePriceDialog;
     String [] itemData;
     private String catName, itemName;
-    Button _updateNewPriceButton;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     public void goBack(View view){
         finish();
@@ -93,6 +95,25 @@ public class singleItemActivity extends AppCompatActivity {
 
         mRef.child("itemPrice").setValue(updatedItemCost.getText().toString());
         mRef.child("itemWorkPrice").setValue(updatedItemWorkCost.getText().toString());
+
+        mRefUser = FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid()).child("Points");
+        mRefUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String userPoints = dataSnapshot.getValue().toString();
+                mRefUser.setValue(Double.parseDouble(userPoints) + 3.2);
+                Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
 
         updatePriceDialog.cancel();
     }
