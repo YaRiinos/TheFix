@@ -18,7 +18,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.sourcey.theFixApp.MainActivity;
@@ -27,7 +26,6 @@ import com.sourcey.theFixApp.account.Account;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -82,7 +80,8 @@ public class SignupActivity extends AppCompatActivity {
         });
 
          user = FirebaseAuth.getInstance().getCurrentUser();
-         userId = user.getUid();
+        assert user != null;
+        userId = user.getUid();
 
     }
 
@@ -149,7 +148,6 @@ public class SignupActivity extends AppCompatActivity {
                             finish();
                         } else {
                             progressDialog.dismiss();
-                            //System.out.println("aiaii");
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(SignupActivity.this, "Authentication failed.",
@@ -170,72 +168,72 @@ public class SignupActivity extends AppCompatActivity {
     }
 
 
-    public void onSignupSuccess() {
-        _signupButton.setEnabled(true);
-        setResult(RESULT_OK, null);
-        finish();
-    }
-
-    public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
-        _signupButton.setEnabled(true);
-    }
-
-    public boolean validate() {
-        boolean valid = true;
-
-        String name = _nameText.getText().toString();
-        String address = _addressText.getText().toString();
-        String email = _emailText.getText().toString();
-        String mobile = _mobileText.getText().toString();
-        String password = _passwordText.getText().toString();
-        String reEnterPassword = _reEnterPasswordText.getText().toString();
-
-        if (name.isEmpty() || name.length() < 3) {
-            _nameText.setError("at least 3 characters");
-            valid = false;
-        } else {
-            _nameText.setError(null);
-        }
-
-        if (address.isEmpty()) {
-            _addressText.setError("Enter Valid Address");
-            valid = false;
-        } else {
-            _addressText.setError(null);
-        }
-
-
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("enter a valid email address");
-            valid = false;
-        } else {
-            _emailText.setError(null);
-        }
-
-        if (mobile.isEmpty() || mobile.length() != 10) {
-            _mobileText.setError("Enter Valid Mobile Number");
-            valid = false;
-        } else {
-            _mobileText.setError(null);
-        }
-
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("between 4 and 10 alphanumeric characters");
-            valid = false;
-        } else {
-            _passwordText.setError(null);
-        }
-
-        if (reEnterPassword.isEmpty() || reEnterPassword.length() < 4 || reEnterPassword.length() > 10 || !(reEnterPassword.equals(password))) {
-            _reEnterPasswordText.setError("Password Do not match");
-            valid = false;
-        } else {
-            _reEnterPasswordText.setError(null);
-        }
-
-        return valid;
-    }
+//    public void onSignupSuccess() {
+//        _signupButton.setEnabled(true);
+//        setResult(RESULT_OK, null);
+//        finish();
+//    }
+//
+//    public void onSignupFailed() {
+//        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+//
+//        _signupButton.setEnabled(true);
+//    }
+//
+//    public boolean validate() {
+//        boolean valid = true;
+//
+//        String name = _nameText.getText().toString();
+//        String address = _addressText.getText().toString();
+//        String email = _emailText.getText().toString();
+//        String mobile = _mobileText.getText().toString();
+//        String password = _passwordText.getText().toString();
+//        String reEnterPassword = _reEnterPasswordText.getText().toString();
+//
+//        if (name.isEmpty() || name.length() < 3) {
+//            _nameText.setError("at least 3 characters");
+//            valid = false;
+//        } else {
+//            _nameText.setError(null);
+//        }
+//
+//        if (address.isEmpty()) {
+//            _addressText.setError("Enter Valid Address");
+//            valid = false;
+//        } else {
+//            _addressText.setError(null);
+//        }
+//
+//
+//        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+//            _emailText.setError("enter a valid email address");
+//            valid = false;
+//        } else {
+//            _emailText.setError(null);
+//        }
+//
+//        if (mobile.isEmpty() || mobile.length() != 10) {
+//            _mobileText.setError("Enter Valid Mobile Number");
+//            valid = false;
+//        } else {
+//            _mobileText.setError(null);
+//        }
+//
+//        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
+//            _passwordText.setError("between 4 and 10 alphanumeric characters");
+//            valid = false;
+//        } else {
+//            _passwordText.setError(null);
+//        }
+//
+//        if (reEnterPassword.isEmpty() || reEnterPassword.length() < 4 || reEnterPassword.length() > 10 || !(reEnterPassword.equals(password))) {
+//            _reEnterPasswordText.setError("Password Do not match");
+//            valid = false;
+//        } else {
+//            _reEnterPasswordText.setError(null);
+//        }
+//
+//        return valid;
+//    }
 
 }

@@ -6,6 +6,7 @@ public class Item  {
             itemWorkPrice,
             itemDesc,
             itemType;
+    private int [] lastItemCost, lastWorkCost;
 
     public Item(){}
 
@@ -19,6 +20,10 @@ public class Item  {
         this.itemWorkPrice = itemWorkPrice;
         this.itemDesc = itemDesc;
         this.itemType = itemType;
+        this.lastItemCost = new int [10];
+        this.lastItemCost[0] = Integer.parseInt(itemPrice);
+        this.lastWorkCost = new int [10];
+        this.lastWorkCost[0] = Integer.parseInt(itemWorkPrice);
     }
 
     public String getItemName() {

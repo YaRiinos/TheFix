@@ -60,6 +60,8 @@ public class ProfileActivity extends AppCompatActivity {
                 ((TextView) findViewById(R.id.profileMobile)).setText(itemData[3]);
                 ((TextView) findViewById(R.id.profileAddress)).setText(itemData[2]);
                 ((TextView) findViewById(R.id.profilePoints)).setText(itemData[0]);
+
+                progressDialog.dismiss();
             }
 
             @Override

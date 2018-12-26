@@ -61,12 +61,6 @@ public class addItemActivity extends AppCompatActivity {
 
     public void addItem(View view) {
 
-        FirebaseDatabase mFirebaseInstance = FirebaseDatabase.getInstance();
-
-        // get reference to 'items' node
-        DatabaseReference mFirebaseDatabase = mFirebaseInstance.getReference("items");
-
-
         String itemName = ((TextView) findViewById(R.id.itemName)).getText().toString();
         String itemPrice = ((TextView) findViewById(R.id.itemPrice)).getText().toString();
         String itemWorkPrice = ((TextView) findViewById(R.id.itemWorkPrice)).getText().toString();
@@ -83,11 +77,14 @@ public class addItemActivity extends AppCompatActivity {
         DatabaseReference mRef = database.getReference().child("Items");
 
         Item item = new Item(itemName, itemPrice, itemWorkPrice, itemDesc, itemType);
+
         mRef.child(itemType).child(itemName).setValue(item).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+
                 Toast.makeText(addItemActivity.this, "Done",
                         Toast.LENGTH_SHORT).show();
+
                 ((TextView) findViewById(R.id.itemName)).setText("");
                 ((TextView) findViewById(R.id.itemPrice)).setText("");
                 ((TextView) findViewById(R.id.itemWorkPrice)).setText("");

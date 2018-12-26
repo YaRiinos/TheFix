@@ -82,9 +82,9 @@ public class ContActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String message = "Name: " + nameText.getText().toString() + "\nEmail: " +
-                        emailText.getText().toString() + "\nMessage: " + messageText.getText().toString();
-
+//                String message = "Name: " + nameText.getText().toString() + "\nEmail: " +
+//                        emailText.getText().toString() + "\nMessage: " + messageText.getText().toString();
+                String message = "";
                 startActivity(getSendEmailIntent(context, "yarin665@gmail.com" ,"Contact Us Mail", message));
 
             }

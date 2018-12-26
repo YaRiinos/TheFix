@@ -37,12 +37,13 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
 
 
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
 
         _guestLink.setOnClickListener(new View.OnClickListener() {
 
@@ -136,7 +137,6 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInAnonymously:success");
-                            FirebaseUser user = auth.getCurrentUser();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             finish();
                         } else {
