@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
-    android:layout_height="300dp">
+    android:layout_height="300dp"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/textView2"
@@ -71,6 +72,7 @@
         android:layout_marginStart="27dp"
         android:layout_marginLeft="27dp"
         android:text="Total Cost:"
+        android:textColor="@color/base"
         android:textSize="17sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/totalProductCost"
         app:layout_constraintStart_toStartOf="parent" />
@@ -82,6 +84,7 @@
         android:layout_marginStart="27dp"
         android:layout_marginLeft="27dp"
         android:text="New Item Cost:"
+        android:textColor="@color/base"
         android:textSize="17sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/newItemCost"
         app:layout_constraintStart_toStartOf="parent" />

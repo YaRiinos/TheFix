@@ -20,6 +20,8 @@ import com.sourcey.theFixApp.MainActivity;
 import com.sourcey.theFixApp.R;
 import com.sourcey.theFixApp.authentication.SignupActivity;
 
+import java.text.DecimalFormat;
+
 public class ProfileActivity extends AppCompatActivity {
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -53,13 +55,14 @@ public class ProfileActivity extends AppCompatActivity {
                 String cleanName = name.substring(1, name.length()-1)
                         .replace("Name=", "").replace("Address=", "")
                         .replace("Email=","").replace("Mobile=","")
-                        .replace("Points=", "");
+                        .replace("Points=", "").replace("Role=","");
                 String[] itemData = cleanName.split(",");
-                ((TextView) findViewById(R.id.profileEmail)).setText(itemData[1]);
-                ((TextView) findViewById(R.id.profileName)).setText(itemData[4]);
-                ((TextView) findViewById(R.id.profileMobile)).setText(itemData[3]);
-                ((TextView) findViewById(R.id.profileAddress)).setText(itemData[2]);
-                ((TextView) findViewById(R.id.profilePoints)).setText(itemData[0]);
+
+                ((TextView) findViewById(R.id.profileEmail)).setText(itemData[2]);
+                ((TextView) findViewById(R.id.profileName)).setText(itemData[5]);
+                ((TextView) findViewById(R.id.profileMobile)).setText(itemData[4]);
+                ((TextView) findViewById(R.id.profileAddress)).setText(itemData[3]);
+                ((TextView) findViewById(R.id.profilePoints)).setText(itemData[1]);
 
                 progressDialog.dismiss();
             }

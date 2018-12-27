@@ -86,7 +86,7 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
                 mMap.addMarker(new MarkerOptions().position(ArielTec2).title("Electric Tec")
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
 
-                float zoomLevel = 16.0f; //This goes up to 21
+                float zoomLevel = 14.0f; //This goes up to 21
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, zoomLevel));
 
             }
@@ -119,11 +119,19 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
             Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
             LatLng userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
-            mMap.clear();
 
             mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
 
+            LatLng ArielTec1 = new LatLng(32.101671, 35.169689);
+            mMap.addMarker(new MarkerOptions().position(ArielTec1).title("Cellphone Tec")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+
+            LatLng ArielTec2 = new LatLng(32.105388, 35.173101);
+            mMap.addMarker(new MarkerOptions().position(ArielTec2).title("Electric Tec")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+
+            float zoomLevel = 14.0f; //This goes up to 21
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, zoomLevel));
 
         }
     }

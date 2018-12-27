@@ -23,6 +23,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.sourcey.theFixApp.R;
 import com.sourcey.theFixApp.maps.findTecMapsActivity;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class singleItemActivity extends AppCompatActivity {
 
     private DatabaseReference mRef, mRefUser;
@@ -104,7 +107,7 @@ public class singleItemActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String userPoints = dataSnapshot.getValue().toString();
-                mRefUser.setValue(Double.parseDouble(userPoints) + 3.2);
+                mRefUser.setValue(round(Double.parseDouble(userPoints) + 3.2, 2));
                 Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_SHORT).show();
 
             }
@@ -144,6 +147,18 @@ public class singleItemActivity extends AppCompatActivity {
     }
 
     public void findTechAround(View view){
-        startActivity(new Intent(getApplicationContext(), findTecMapsActivity.class));
+
+        Intent intent = new Intent(getApplicationContext(), findTecMapsActivity.class);
+        intent.putExtra("cat", catName);
+        startActivity(intent);
+
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }

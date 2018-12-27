@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/cont" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
+        android:id="@+id/managerSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/imageView"
@@ -101,8 +101,8 @@
         android:layout_width="38dp"
         android:layout_height="40dp"
         android:layout_alignTop="@+id/imageView"
-        android:layout_alignEnd="@+id/floatingActionButton3"
-        android:layout_alignRight="@+id/floatingActionButton3"
+        android:layout_alignEnd="@+id/managerSettings"
+        android:layout_alignRight="@+id/managerSettings"
         android:onClick="openUserProfile"
         app:srcCompat="@drawable/profile_white"
         tools:ignore="VectorDrawableCompat" />

@@ -138,6 +138,7 @@ public class SignupActivity extends AppCompatActivity {
                             newPost.put("Email", account.getEmail());
                             newPost.put("Mobile", account.getMobile());
                             newPost.put("Points", account.getPoints());
+                            newPost.put("Role", "normal");
 
                             current_user_db.setValue(newPost);
 
