@@ -34,16 +34,17 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="34dp"
+        android:layout_height="36dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginBottom="26dp"
         android:onClick="goBack"
-        app:srcCompat="@drawable/back" />
+        app:srcCompat="@drawable/go_back_white"
+        tools:ignore="VectorDrawableCompat" />
 
     <android.support.v7.widget.GridLayout
         android:layout_width="match_parent"
