@@ -47,9 +47,11 @@ public class itemListActivity extends AppCompatActivity {
         progressDialog.setMessage("Retrieving Data...");
         progressDialog.show();
 
+        //Get the category from the last activity
         Bundle extras = getIntent().getExtras();
         final String catName = extras.getString("cat");
 
+        //Go to that category in the database and get all the data
         mRef = FirebaseDatabase.getInstance().getReference().child("Items").child(catName);
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,

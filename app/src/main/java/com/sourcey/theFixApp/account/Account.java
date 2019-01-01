@@ -2,6 +2,9 @@ package com.sourcey.theFixApp.account;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
+/**
+ * The user profile class
+ */
 @IgnoreExtraProperties
 public class Account {
 

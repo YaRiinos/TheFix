@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         final FloatingActionButton managerButton = findViewById(R.id.managerSettings);
         managerButton.setVisibility(View.INVISIBLE);
 
+        //Check if the user is a manager or not
         mRefUser = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUser.getUid()).child("Role");
         mRefUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String userRole = dataSnapshot.getValue().toString();
 
+                //If ths user is a manger, set the management button visible
                 if (userRole.equals("gm"))
                     managerButton.setVisibility(View.VISIBLE);
 
@@ -95,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
         String catName;
 
+        //Get which button the user press and set the category name accordingly
         switch(view.getId()) {
             case R.id.elctCat:
                 catName = "Electric";
@@ -109,21 +112,24 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             default:
-                throw new RuntimeException("Unknow button ID");
+                throw new RuntimeException("Unknown button ID");
 
         }
 
+        //Open the item list activity and pass the category name
         Intent intent = new Intent(MainActivity.this, itemListActivity.class);
         intent.putExtra("cat", catName);
         startActivity(intent);
     }
 
+    //Open contact us activity
     public void openCont(View view){
         Intent intent = new Intent(MainActivity.this, ContActivity.class);
         startActivity(intent);
 
     }
 
+    //Open the user profile activity
     public void openUserProfile(View view){
         if (mAuth.getCurrentUser().isAnonymous()) return;
         Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
@@ -131,8 +137,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
+    //Open the manager activity
     public void openManagerPage(View view){
         Intent intent = new Intent(MainActivity.this, managmentActivity.class);
         startActivity(intent);
@@ -171,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        MainActivity.this.finish();
+                        finish();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -181,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
                 });
         AlertDialog alert = builder.create();
         alert.show();
+
     }
 
 

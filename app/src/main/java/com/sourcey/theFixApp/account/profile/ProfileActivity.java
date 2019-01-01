@@ -28,6 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference mRef;
 
 
+    //When press back finish the activity
     public void goBack(View view) {
         finish();
     }
@@ -37,6 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        //Progress dialog for loading the user data
         final ProgressDialog progressDialog = new ProgressDialog(ProfileActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
@@ -45,12 +47,15 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
+        //Go to the user location in the database
         mRef = FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid());
 
 
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                //Get the string that represent the user
                 String name = dataSnapshot.getValue().toString();
                 String cleanName = name.substring(1, name.length()-1)
                         .replace("Name=", "").replace("Address=", "")
@@ -58,12 +63,14 @@ public class ProfileActivity extends AppCompatActivity {
                         .replace("Points=", "").replace("Role=","");
                 String[] itemData = cleanName.split(",");
 
+                //Set all the user data in the fields
                 ((TextView) findViewById(R.id.profileEmail)).setText(itemData[2]);
                 ((TextView) findViewById(R.id.profileName)).setText(itemData[5]);
                 ((TextView) findViewById(R.id.profileMobile)).setText(itemData[4]);
                 ((TextView) findViewById(R.id.profileAddress)).setText(itemData[3]);
                 ((TextView) findViewById(R.id.profilePoints)).setText(itemData[1]);
 
+                //After loading the data release the progress dialog
                 progressDialog.dismiss();
             }
 
@@ -74,6 +81,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+    //When press Back open the main activity
     public void openMain(View view){
         Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
         startActivity(intent);

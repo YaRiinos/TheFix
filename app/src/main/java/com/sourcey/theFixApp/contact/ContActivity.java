@@ -28,6 +28,7 @@ public class ContActivity extends AppCompatActivity {
         emailText = findViewById(R.id.emailText);
         messageText = findViewById(R.id.messageText);
 
+        //Open send a message app -> Gmail an set the fields
         final Intent _Intent = new Intent(android.content.Intent.ACTION_SEND);
         _Intent.setType("text/html");
         _Intent.putExtra(android.content.Intent.EXTRA_EMAIL,  new String[] {"thefix-support@fix.com"});

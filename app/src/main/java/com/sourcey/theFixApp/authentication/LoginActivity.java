@@ -44,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-
         _guestLink.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -52,7 +51,8 @@ public class LoginActivity extends AppCompatActivity {
                 guestLogin();
             }
         });
-        
+
+
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -84,7 +84,6 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-       // _loginButton.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.AppTheme_Dark_Dialog);
@@ -155,7 +154,6 @@ public class LoginActivity extends AppCompatActivity {
         if (requestCode == REQUEST_SIGNUP) {
             if (resultCode == RESULT_OK) {
 
-                // TODO: Implement successful signup logic here
                 // By default we just finish the Activity and log them in automatically
                 this.finish();
             }
