@@ -20,7 +20,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.sourcey.theFixApp.Manifest;
 import com.sourcey.theFixApp.R;
 
 public class findTecMapsActivity extends FragmentActivity implements OnMapReadyCallback {
