@@ -24,14 +24,13 @@
         android:id="@+id/textView9"
         android:layout_width="87dp"
         android:layout_height="30dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginBottom="57dp"
+        android:layout_marginTop="56dp"
         android:text="Find Me"
         android:textColor="@color/primary"
         android:textSize="20sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="@+id/newItemButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView10" />
 

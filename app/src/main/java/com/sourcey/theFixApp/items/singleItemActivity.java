@@ -130,7 +130,6 @@ public class singleItemActivity extends AppCompatActivity {
         updatePriceDialog = new Dialog(singleItemActivity.this);
         updatePriceDialog.setContentView(R.layout.replaceproductcustompop);
         updatePriceDialog.setTitle("Replace Item");
-
         updatePriceDialog.show();
 
     }
