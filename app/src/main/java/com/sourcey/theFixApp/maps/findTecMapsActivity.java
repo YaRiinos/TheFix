@@ -10,6 +10,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.widget.Toast;
 
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,13 +21,30 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.sourcey.theFixApp.R;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class findTecMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     LocationManager locationManager;
     LocationListener locationListener;
+
+    private String catName;
+    String [] itemData;
+
+    List<MarkerOptions> tecMarkerList = new ArrayList<>();
+
+    private DatabaseReference mRef;
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -48,6 +67,10 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        Bundle extras = getIntent().getExtras();
+        catName = extras.getString("cat");
+
+        mRef = FirebaseDatabase.getInstance().getReference().child("Technician").child(catName);
 
     }
 
@@ -83,6 +106,9 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
                 LatLng ArielTec2 = new LatLng(32.105388, 35.173101);
                 mMap.addMarker(new MarkerOptions().position(ArielTec2).title("Electric Tec")
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+
+
+
 
                 float zoomLevel = 14.0f; //This goes up to 21
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, zoomLevel));
@@ -120,13 +146,38 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
 
             mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
 
-            LatLng ArielTec1 = new LatLng(32.101671, 35.169689);
-            mMap.addMarker(new MarkerOptions().position(ArielTec1).title("Cellphone Tec")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+            mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-            LatLng ArielTec2 = new LatLng(32.105388, 35.173101);
-            mMap.addMarker(new MarkerOptions().position(ArielTec2).title("Electric Tec")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                    for(DataSnapshot postSnap : dataSnapshot.getChildren()){
+                        String techData = postSnap.getValue().toString();
+
+                        String cleanTechData = techData.substring(1, techData.length()-1)
+                                .replace("address=", "").replace("email=", "")
+                                .replace("id=","").replace("mobile=","")
+                                .replace("name=","").replace("password=", "")
+                                .replace("points=", "");
+                        itemData = cleanTechData.split(",");
+
+                        LatLng tecLocation = new LatLng(Double.parseDouble(itemData[1]), Double.parseDouble(itemData[2]));
+                        MarkerOptions tecMarker = new MarkerOptions().position(tecLocation).title(itemData[4])
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+
+                        tecMarkerList.add(tecMarker);
+
+                    }
+
+                    for (MarkerOptions marker: tecMarkerList) { mMap.addMarker(marker); }
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
 
             float zoomLevel = 14.0f; //This goes up to 21
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, zoomLevel));
