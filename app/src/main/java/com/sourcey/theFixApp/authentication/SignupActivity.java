@@ -140,7 +140,7 @@ public class SignupActivity extends AppCompatActivity {
                             String user_id = auth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
 
-                            Map newPost = new HashMap();
+                            Map<String, java.io.Serializable> newPost = new HashMap<String, java.io.Serializable>();
                             newPost.put("Name", account.getName());
                             newPost.put("Address", account.getAddress());
                             newPost.put("Email", account.getEmail());
