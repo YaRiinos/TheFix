@@ -10,9 +10,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.widget.Toast;
-
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -140,7 +137,7 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
 
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
-            Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            final Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
             LatLng userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
 
@@ -168,7 +165,15 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
 
                     }
 
-                    for (MarkerOptions marker: tecMarkerList) { mMap.addMarker(marker); }
+                    for (MarkerOptions marker: tecMarkerList) {
+
+                        LatLng markerPosition = marker.getPosition();
+
+                        //Make the user see just the tech in the area (5 KM)
+                        if(calculateDistanceInKilometer(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude()
+                                , markerPosition.latitude, markerPosition.longitude) < 5)
+                                        mMap.addMarker(marker);
+                    }
 
 
                 }
@@ -183,5 +188,21 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, zoomLevel));
 
         }
+    }
+
+    public final static double AVERAGE_RADIUS_OF_EARTH_KM = 6371;
+    public int calculateDistanceInKilometer(double userLat, double userLng,
+                                            double venueLat, double venueLng) {
+
+        double latDistance = Math.toRadians(userLat - venueLat);
+        double lngDistance = Math.toRadians(userLng - venueLng);
+
+        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+                + Math.cos(Math.toRadians(userLat)) * Math.cos(Math.toRadians(venueLat))
+                * Math.sin(lngDistance / 2) * Math.sin(lngDistance / 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        return (int) (Math.round(AVERAGE_RADIUS_OF_EARTH_KM * c));
     }
 }
