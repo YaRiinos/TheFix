@@ -92,24 +92,6 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
             @Override
             public void onLocationChanged(Location location) {
 
-                LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
-
-                mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
-
-                LatLng ArielTec1 = new LatLng(32.101671, 35.169689);
-                mMap.addMarker(new MarkerOptions().position(ArielTec1).title("Cellphone Tec")
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-
-                LatLng ArielTec2 = new LatLng(32.105388, 35.173101);
-                mMap.addMarker(new MarkerOptions().position(ArielTec2).title("Electric Tec")
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
-
-
-
-
-                float zoomLevel = 14.0f; //This goes up to 21
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, zoomLevel));
-
             }
 
             @Override
@@ -137,9 +119,9 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
 
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
-            final Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-            LatLng userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
+            final LatLng userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
 
             mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
 
@@ -158,7 +140,7 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
                         itemData = cleanTechData.split(",");
 
                         LatLng tecLocation = new LatLng(Double.parseDouble(itemData[1]), Double.parseDouble(itemData[2]));
-                        MarkerOptions tecMarker = new MarkerOptions().position(tecLocation).title(itemData[4])
+                        MarkerOptions tecMarker = new MarkerOptions().position(tecLocation).title(itemData[4] + " - " + itemData[3])
                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
 
                         tecMarkerList.add(tecMarker);
@@ -170,7 +152,7 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
                         LatLng markerPosition = marker.getPosition();
 
                         //Make the user see just the tech in the area (5 KM)
-                        if(calculateDistanceInKilometer(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude()
+                        if(calculateDistanceInKilometer(userLocation.latitude, userLocation.longitude
                                 , markerPosition.latitude, markerPosition.longitude) < 5)
                                         mMap.addMarker(marker);
                     }
