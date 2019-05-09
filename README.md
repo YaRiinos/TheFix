@@ -4,8 +4,6 @@
 
 
 ## Info
-<b>CSV:</b> <a href="https://en.wikipedia.org/wiki/Comma-separated_values">Wikipedia</a> 
-<b>KML:</b> <a href="https://en.wikipedia.org/wiki/Keyhole_Markup_Language">Wikipedia</a>
 
 ## Features
 
