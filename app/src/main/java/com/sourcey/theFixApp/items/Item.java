@@ -1,12 +1,20 @@
 package com.sourcey.theFixApp.items;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class Item  {
     private String itemName,
             itemPrice,
             itemWorkPrice,
             itemDesc,
             itemType;
-    private int [] lastItemCost, lastWorkCost;
+
+    private String lastIndex;
+
+    private HashMap<Integer, Integer> lastItemCost = new HashMap<>();
+    private HashMap<Integer, Integer> lastWorkCost = new HashMap<>();
 
     public Item(){}
 
@@ -20,10 +28,7 @@ public class Item  {
         this.itemWorkPrice = itemWorkPrice;
         this.itemDesc = itemDesc;
         this.itemType = itemType;
-        this.lastItemCost = new int [10];
-        this.lastItemCost[0] = Integer.parseInt(itemPrice);
-        this.lastWorkCost = new int [10];
-        this.lastWorkCost[0] = Integer.parseInt(itemWorkPrice);
+        this.lastIndex = "0";
     }
 
     public String getItemName() {
