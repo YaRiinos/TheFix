@@ -7,8 +7,9 @@ The application aims to:
   - Allow users to update a real-time price to a specific defect they have repaired, therefore creating a social network centered around monitoring prices and fixing malfunctions.
 
 ## The Rationale
-Electrical day to day products tend to malfunction in an increasingly frequent rate. malfunctions in our cars and cellular phones have become routine, causing us waste large sums of money in order to try and repair them. How many times did your electric boiler disappoint you? How many times has your car break down just when you were in a rush? How many times have you broken the screen of your cell
-phone? How many times did the compressor in your air conditioner had broken down? The repair of these defaults is done by professionals who often take advantage of the general public's innocence and ignorance,demanding large sums in order to fix something that is essential to our normal routine of life.
+Electrical day to day products tend to malfunction in an increasingly frequent rate. malfunctions in our cars and cellular phones have become routine, causing us waste large sums of money in order to try and repair them. How many times did your electric boiler disappoint you? How many times has your car break down just when you were in a rush? How many times have you broken the screen of your cell-phone?
+The repair of these defaults is done by professionals who often take advantage of the general public's innocence and ignorance,demanding large sums in order to fix something that is essential to our normal routine of life.
+
 The public's lack of knowledge about "How much do we need to fix this problem?" Is the main reason for application development. This application will provide a solution to customers trying to estimate the cost of a malfunction in order to save money and promote the relationship between customers and honest professional technicians.
 
 ## Features
