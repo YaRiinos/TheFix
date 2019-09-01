@@ -125,6 +125,8 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
 
             mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
 
+            mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(findTecMapsActivity.this));
+
             mRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -140,8 +142,9 @@ public class findTecMapsActivity extends FragmentActivity implements OnMapReadyC
                         itemData = cleanTechData.split(",");
 
                         LatLng tecLocation = new LatLng(Double.parseDouble(itemData[1]), Double.parseDouble(itemData[2]));
-                        MarkerOptions tecMarker = new MarkerOptions().position(tecLocation).title(itemData[4] + " - " + itemData[3])
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+                        MarkerOptions tecMarker = new MarkerOptions().position(tecLocation).title(itemData[4]).
+                                snippet("Phone Number: " + itemData[3] + " | Rating: 4.3/5").icon(BitmapDescriptorFactory.
+                                defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
 
                         tecMarkerList.add(tecMarker);
 

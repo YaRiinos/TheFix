@@ -83,7 +83,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-         user = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         userId = user.getUid();
 

@@ -32,6 +32,7 @@ public class singleItemActivity extends AppCompatActivity {
     Dialog updatePriceDialog;
     String [] itemData;
     private String catName, itemName;
+    TextView priceWorkText, priceProductText;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     public void goBack(View view){
@@ -62,6 +63,9 @@ public class singleItemActivity extends AppCompatActivity {
                 ((TextView) findViewById(R.id.itemDesc)).setText(itemData[3]);
                 ((TextView) findViewById(R.id.productPrice)).setText(itemData[2]);
                 ((TextView) findViewById(R.id.workPrice)).setText(itemData[4]);
+
+                priceProductText = findViewById(R.id.productPrice);
+                priceWorkText = findViewById(R.id.workPrice);
             }
 
             @Override
@@ -108,7 +112,7 @@ public class singleItemActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String userPoints = dataSnapshot.getValue().toString();
                 mRefUser.setValue(round(Double.parseDouble(userPoints) + 3.2, 2));
-                Toast.makeText(getApplicationContext(), "Updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Updated\nYou got 3.2 points!", Toast.LENGTH_LONG).show();
 
             }
 
@@ -131,6 +135,12 @@ public class singleItemActivity extends AppCompatActivity {
         updatePriceDialog.setContentView(R.layout.replaceproductcustompop);
         updatePriceDialog.setTitle("Replace Item");
         updatePriceDialog.show();
+
+        TextView totalPrice = findViewById(R.id.totalProductCost);
+       // int totalPriceInt = Integer.parseInt(priceProductText.getText().toString()) +
+          //      Integer.parseInt(priceWorkText.getText().toString());
+
+         //totalPrice.setText(totalPriceInt);
 
     }
 
