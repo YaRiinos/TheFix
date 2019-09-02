@@ -24,7 +24,9 @@ import java.text.DecimalFormat;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    //Get the current user
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    
     private DatabaseReference mRef;
 
 
@@ -51,6 +53,7 @@ public class ProfileActivity extends AppCompatActivity {
         mRef = FirebaseDatabase.getInstance().getReference().child("Users").child(user.getUid());
 
 
+        //Get all the user data from the database and disply them in the currect fields in the activity layout
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
